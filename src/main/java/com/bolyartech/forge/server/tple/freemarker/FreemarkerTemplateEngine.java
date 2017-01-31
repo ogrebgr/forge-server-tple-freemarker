@@ -34,7 +34,7 @@ public class FreemarkerTemplateEngine implements TemplateEngine {
             template.process(mAttributes, stringWriter);
             return stringWriter.toString();
         } catch (IOException | TemplateException e) {
-            throw new IllegalArgumentException(e);
+            throw new RuntimeException(e);
         }
     }
 }
