@@ -5,6 +5,7 @@ import com.bolyartech.forge.server.misc.TemplateEngineFactory;
 import freemarker.template.Configuration;
 import freemarker.template.Version;
 
+import java.io.File;
 import java.net.URL;
 
 
@@ -13,6 +14,9 @@ public class FreemarkerTemplateEngineFactory implements TemplateEngineFactory {
     private final Configuration mConfiguration;
 
     public FreemarkerTemplateEngineFactory(String templatePathPrefix) {
+        if (!templatePathPrefix.startsWith(File.separator)) {
+            templatePathPrefix = File.separator + templatePathPrefix;
+        }
         mTemplatePathPrefix = templatePathPrefix;
 
         mConfiguration = new Configuration(new Version(2, 3, 23));
